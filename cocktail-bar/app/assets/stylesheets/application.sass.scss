@@ -1,1 +1,22 @@
 // Entry point for your Sass build
+
+//Mixins
+@import "mixins/media";
+
+//Components
+@import "components/left_bar";
+@import "components/btn";
+@import "components/category";
+@import "components/cocktail";
+@import "components/error_message";
+@import "components/flash";
+
+//Config
+@import "config/reset";
+@import "config/variables";
+
+//Layouts
+@import "layouts/header";
+
+//Utilities
+@import "utilities/margins";
