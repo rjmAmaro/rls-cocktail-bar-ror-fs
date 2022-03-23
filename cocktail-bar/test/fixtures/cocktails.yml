@@ -3,8 +3,13 @@ first:
   picture: https://www.thecocktaildb.com/images/ingredients/gin.png
   instructions: instruction
 <<<<<<< HEAD
+<<<<<<< HEAD
   category: first
 =======
   category: first
   ingredients: first
 >>>>>>> UI_11
+=======
+  category: first
+  ingredients: first
+>>>>>>> ROR_08
