@@ -3,6 +3,10 @@ require "application_system_test_case"
 class CocktailsTest < ApplicationSystemTestCase
   setup do
     @category = categories(:first)
+<<<<<<< HEAD
+=======
+    @cocktail = cocktails(:first)
+>>>>>>> UI_03
   end
 
   test "List categories" do
@@ -10,7 +14,17 @@ class CocktailsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Categories"
   end
 
+<<<<<<< HEAD
   # test "List all cocktails from a category" do  end
+=======
+  test "List all cocktails from a category" do
+    visit categories_path
+    assert_selector "h1", text: "Categories"
+
+    click_on @category.name
+    assert_text @cocktail.name
+  end
+>>>>>>> UI_03
 
   # test "List searched cocktails from a category" do  end
 

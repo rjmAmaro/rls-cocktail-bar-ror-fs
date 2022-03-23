@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
@@ -36,11 +37,52 @@ FOREIGN KEY ("category_id")
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (4.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220322170857)[0m
   [1m[35m (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+=======
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories"[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "cocktails"[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "cocktails" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "picture" text NOT NULL, "category_id" integer NOT NULL, "instructions" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_cocktails_on_category_id" ON "cocktails" ("category_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cocktails_ingredients"[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "cocktails_ingredients" ("cocktail_id" integer NOT NULL, "ingredient_id" integer NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "picture" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acocktails" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "picture" text NOT NULL, "category_id" integer NOT NULL, "instructions" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_acocktails_on_category_id" ON "acocktails" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acocktails" ("id","name","picture","category_id","instructions","created_at","updated_at")
+                     SELECT "id","name","picture","category_id","instructions","created_at","updated_at" FROM "cocktails"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "cocktails"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "cocktails" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "picture" text NOT NULL, "category_id" integer NOT NULL, "instructions" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_2d24943f5c"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_cocktails_on_category_id" ON "cocktails" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "cocktails" ("id","name","picture","category_id","instructions","created_at","updated_at")
+                     SELECT "id","name","picture","category_id","instructions","created_at","updated_at" FROM "acocktails"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acocktails"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220322170857)[0m
+  [1m[35m (2.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+>>>>>>> UI_03
 (20220321133830),
 (20220321145431),
 (20220321150919);
 
 [0m
+<<<<<<< HEAD
   [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
@@ -74,10 +116,46 @@ CocktailsTest: test_List_category
 ---------------------------------
   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
 Started GET "/categories" for 127.0.0.1 at 2022-03-23 13:36:24 +0000
+=======
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2022-03-23 13:54:07.135168"], ["updated_at", "2022-03-23 13:54:07.135168"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "857d7e59140af50d335498d4e0eb23caa59d83da"], ["created_at", "2022-03-23 13:54:07.141118"], ["updated_at", "2022-03-23 13:54:07.141118"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.5ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 13:54:07.324303', '2022-03-23 13:54:07.324303');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 13:54:07.324303', '2022-03-23 13:54:07.324303');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 13:54:07.324303', '2022-03-23 13:54:07.324303')[0m
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 13:54:08 +0000
+>>>>>>> UI_03
 Processing by CategoriesController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering categories/index.html.erb within layouts/application
   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+<<<<<<< HEAD
   Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.8ms | Allocations: 420)
   Rendered categories/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1433)
   Rendered layout layouts/application.html.erb (Duration: 238.1ms | Allocations: 75434)
@@ -94,10 +172,49 @@ Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 6
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+=======
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 1.0ms | Allocations: 420)
+  Rendered categories/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1538)
+  Rendered layout layouts/application.html.erb (Duration: 244.0ms | Allocations: 73756)
+Completed 200 OK in 254ms (Views: 246.7ms | ActiveRecord: 0.2ms | Allocations: 80756)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 13:54:08 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 13:54:08 +0000
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 13:54:08 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 162)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 444)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1341)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 1675)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 13:54:09 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of templates [0 times] (Duration: 0.1ms | Allocations: 25)
+  Rendered categories/show.html.erb (Duration: 17.8ms | Allocations: 4106)
+Completed 200 OK in 36ms (Views: 18.2ms | ActiveRecord: 0.7ms | Allocations: 9739)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+>>>>>>> UI_03
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+<<<<<<< HEAD
   [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
 DELETE FROM "cocktails";
 DELETE FROM "ingredients";
@@ -139,12 +256,109 @@ Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 6
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
   [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+=======
+  [1m[36mFixtures Load (0.5ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 13:59:02.095177', '2022-03-23 13:59:02.095177');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 13:59:02.095177', '2022-03-23 13:59:02.095177');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 13:59:02.095177', '2022-03-23 13:59:02.095177');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', NULL, 309456473, 'instruction', '2022-03-23 13:59:02.097614', '2022-03-23 13:59:02.097614')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 13:59:02.105975', '2022-03-23 13:59:02.105975');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 13:59:02.105975', '2022-03-23 13:59:02.105975');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 13:59:02.105975', '2022-03-23 13:59:02.105975');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', NULL, 309456473, 'instruction', '2022-03-23 13:59:02.106046', '2022-03-23 13:59:02.106046')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 14:00:23.093461', '2022-03-23 14:00:23.093461');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 14:00:23.093461', '2022-03-23 14:00:23.093461');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 14:00:23.093461', '2022-03-23 14:00:23.093461');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 14:00:23.094551', '2022-03-23 14:00:23.094551')[0m
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 14:00:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 1.2ms | Allocations: 420)
+  Rendered categories/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1432)
+  Rendered layout layouts/application.html.erb (Duration: 56.1ms | Allocations: 22249)
+Completed 200 OK in 65ms (Views: 58.2ms | ActiveRecord: 0.3ms | Allocations: 28081)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 14:00:24 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 14:00:24 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 14:00:24 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 2.1ms | Allocations: 564)
+  Rendered categories/show.html.erb (Duration: 15.2ms | Allocations: 4551)
+Completed 200 OK in 21ms (Views: 15.7ms | ActiveRecord: 0.2ms | Allocations: 8287)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 14:00:26 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 162)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 451)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1351)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 1697)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+>>>>>>> UI_03
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mFixtures Load (0.3ms)[0m  [1m[31mDELETE FROM "categories";
 DELETE FROM "cocktails";
 DELETE FROM "ingredients";
+<<<<<<< HEAD
 INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 13:40:39.379266', '2022-03-23 13:40:39.379266');
 INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 13:40:39.379266', '2022-03-23 13:40:39.379266');
 INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 13:40:39.379266', '2022-03-23 13:40:39.379266')[0m
@@ -158,14 +372,65 @@ CocktailsTest: test_List_categories
 -----------------------------------
   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
 Started GET "/categories" for 127.0.0.1 at 2022-03-23 13:40:40 +0000
+=======
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 14:02:10.000360', '2022-03-23 14:02:10.000360');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 14:02:10.000360', '2022-03-23 14:02:10.000360');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 14:02:10.000360', '2022-03-23 14:02:10.000360');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 14:02:10.002035', '2022-03-23 14:02:10.002035')[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 14:02:11 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.6ms | Allocations: 420)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1432)
+  Rendered layout layouts/application.html.erb (Duration: 52.3ms | Allocations: 22050)
+Completed 200 OK in 61ms (Views: 54.3ms | ActiveRecord: 0.2ms | Allocations: 27882)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 14:02:11 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 14:02:11 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 14:02:11 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.7ms | Allocations: 567)
+  Rendered categories/show.html.erb (Duration: 9.5ms | Allocations: 3551)
+Completed 200 OK in 18ms (Views: 10.9ms | ActiveRecord: 0.3ms | Allocations: 7853)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 14:02:11 +0000
+>>>>>>> UI_03
 Processing by CategoriesController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering categories/index.html.erb within layouts/application
   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+<<<<<<< HEAD
   Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.8ms | Allocations: 420)
   Rendered categories/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1432)
   Rendered layout layouts/application.html.erb (Duration: 54.6ms | Allocations: 22736)
 Completed 200 OK in 63ms (Views: 58.1ms | ActiveRecord: 0.1ms | Allocations: 28535)
 Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 13:40:40 +0000
 Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 13:40:40 +0000
+=======
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 162)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 444)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1341)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 1674)
+>>>>>>> UI_03
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
