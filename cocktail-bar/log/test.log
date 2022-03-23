@@ -3160,3 +3160,1049 @@ Completed 200 OK in 25ms (Views: 15.2ms | ActiveRecord: 0.8ms | Allocations: 746
 Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1145)
 >>>>>>> ROR_08
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:46:57.857569', '2022-03-23 15:46:57.857569');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:46:57.857569', '2022-03-23 15:46:57.857569');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:46:57.857569', '2022-03-23 15:46:57.857569');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:46:57.859112', '2022-03-23 15:46:57.859112');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:46:57.861583', '2022-03-23 15:46:57.861583')[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:46:58 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 24236)
+Completed 200 OK in 49ms (Views: 44.3ms | ActiveRecord: 0.1ms | Allocations: 30083)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:46:58 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:46:58 +0000
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:46:58 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 463)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1361)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1707)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 2.3ms | Allocations: 1335)
+  Rendered categories/show.html.erb (Duration: 8.1ms | Allocations: 4316)
+Completed 200 OK in 13ms (Views: 8.5ms | ActiveRecord: 0.3ms | Allocations: 8036)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 1.0ms | Allocations: 267)
+  Rendered cocktails/show.html.erb (Duration: 40.3ms | Allocations: 5734)
+Completed 200 OK in 47ms (Views: 41.1ms | ActiveRecord: 0.6ms | Allocations: 8130)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.7ms | Allocations: 774)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.1ms | Allocations: 2544)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1356)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 1691)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 1.7ms | Allocations: 749)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1147)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:46:59 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 1.5ms | Allocations: 775)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1527)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:47:01 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1356)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1691)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:47:01 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 2.1ms | Allocations: 748)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 1148)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:48:51.441584', '2022-03-23 15:48:51.441584');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:48:51.441584', '2022-03-23 15:48:51.441584');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:48:51.441584', '2022-03-23 15:48:51.441584');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:48:51.442940', '2022-03-23 15:48:51.442940');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:48:51.445556', '2022-03-23 15:48:51.445556')[0m
+  [1m[36mTRANSACTION (14.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 437)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1449)
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 23856)
+Completed 200 OK in 50ms (Views: 45.0ms | ActiveRecord: 0.1ms | Allocations: 29703)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.1ms | Allocations: 577)
+  Rendered categories/show.html.erb (Duration: 7.6ms | Allocations: 4317)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 8040)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1353)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1686)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.5ms | Allocations: 205)
+  Rendered categories/show.html.erb (Duration: 1.9ms | Allocations: 745)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1141)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.8ms | Allocations: 264)
+  Rendered cocktails/show.html.erb (Duration: 12.6ms | Allocations: 5023)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.4ms | Allocations: 7424)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:48:52 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.1ms | Allocations: 1193)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 2544)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:48:53 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.5ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1356)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1691)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:48:53 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 4.0ms | Allocations: 1187)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1678)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:48:53 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 1.8ms | Allocations: 775)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1891)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:48:55 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 464)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1364)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 1711)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:50:23.502267', '2022-03-23 15:50:23.502267');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:50:23.502267', '2022-03-23 15:50:23.502267');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:50:23.502267', '2022-03-23 15:50:23.502267');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:50:23.503437', '2022-03-23 15:50:23.503437');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:50:23.505742', '2022-03-23 15:50:23.505742')[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 24296)
+Completed 200 OK in 49ms (Views: 44.4ms | ActiveRecord: 0.2ms | Allocations: 30143)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.1ms | Allocations: 587)
+  Rendered categories/show.html.erb (Duration: 6.2ms | Allocations: 3569)
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 7293)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1353)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1686)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1353)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1686)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 205)
+  Rendered categories/show.html.erb (Duration: 1.6ms | Allocations: 745)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1143)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:50:24 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.8ms | Allocations: 264)
+  Rendered cocktails/show.html.erb (Duration: 10.8ms | Allocations: 5018)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 0.5ms | Allocations: 7416)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:50:27 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 464)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1364)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 1712)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:50:27 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.5ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 1.9ms | Allocations: 750)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1150)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:50:27 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 1.9ms | Allocations: 776)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 1527)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:50:27 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 4.4ms | Allocations: 1198)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.1ms | Allocations: 2552)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:51:20.839326', '2022-03-23 15:51:20.839326');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:51:20.839326', '2022-03-23 15:51:20.839326');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:51:20.839326', '2022-03-23 15:51:20.839326');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:51:20.840495', '2022-03-23 15:51:20.840495');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:51:20.842894', '2022-03-23 15:51:20.842894')[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:21 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 24026)
+Completed 200 OK in 49ms (Views: 44.1ms | ActiveRecord: 0.1ms | Allocations: 29873)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:51:21 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:51:21 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:21 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 2.5ms | Allocations: 1335)
+  Rendered categories/show.html.erb (Duration: 8.8ms | Allocations: 4317)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 0.2ms | Allocations: 8040)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.5ms | Allocations: 261)
+  Rendered cocktails/show.html.erb (Duration: 6.7ms | Allocations: 4971)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.4ms | Allocations: 7370)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.3ms | Allocations: 1196)
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 2550)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1356)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1691)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1354)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1688)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.3ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 1.7ms | Allocations: 749)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1147)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:51:22 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 1.7ms | Allocations: 776)
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 2059)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1356)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1691)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:24 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 2.1ms | Allocations: 747)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1145)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:51:39.522945', '2022-03-23 15:51:39.522945');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:51:39.522945', '2022-03-23 15:51:39.522945');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:51:39.522945', '2022-03-23 15:51:39.522945');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:51:39.524107', '2022-03-23 15:51:39.524107');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:51:39.526449', '2022-03-23 15:51:39.526449')[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 24215)
+Completed 200 OK in 47ms (Views: 42.5ms | ActiveRecord: 0.1ms | Allocations: 30062)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1353)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 1687)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.1ms | Allocations: 577)
+  Rendered categories/show.html.erb (Duration: 9.8ms | Allocations: 4316)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 8032)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:51:40 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 1.2ms | Allocations: 267)
+  Rendered cocktails/show.html.erb (Duration: 35.1ms | Allocations: 7985)
+Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 0.4ms | Allocations: 10380)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 464)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1364)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 1711)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:43 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 1.9ms | Allocations: 750)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms | Allocations: 1152)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:51:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1355)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 1688)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:51:43 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.5ms | Allocations: 205)
+  Rendered categories/show.html.erb (Duration: 1.9ms | Allocations: 745)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1141)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:51:43 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 2.0ms | Allocations: 776)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1527)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:53:33.748716', '2022-03-23 15:53:33.748716');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:53:33.748716', '2022-03-23 15:53:33.748716');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:53:33.748716', '2022-03-23 15:53:33.748716');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:53:33.749852', '2022-03-23 15:53:33.749852');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:53:33.752272', '2022-03-23 15:53:33.752272')[0m
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:53:34 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.7ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 24195)
+Completed 200 OK in 46ms (Views: 41.5ms | ActiveRecord: 0.1ms | Allocations: 30042)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:53:34 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:53:34 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:53:34 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 2.4ms | Allocations: 1335)
+  Rendered categories/show.html.erb (Duration: 8.4ms | Allocations: 4317)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.2ms | Allocations: 8040)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:53:35 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1353)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1686)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:53:35 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.3ms | Allocations: 205)
+  Rendered categories/show.html.erb (Duration: 1.4ms | Allocations: 745)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1141)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:53:35 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 1.1ms | Allocations: 263)
+  Rendered cocktails/show.html.erb (Duration: 15.7ms | Allocations: 7439)
+Completed 200 OK in 23ms (Views: 17.1ms | ActiveRecord: 0.6ms | Allocations: 9839)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:53:37 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 464)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1364)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms | Allocations: 1712)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:53:37 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.0ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 4.3ms | Allocations: 750)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 1150)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:53:37 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.3ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 2.2ms | Allocations: 1140)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 2058)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:53:37 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 1.2ms | Allocations: 609)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.1ms | Allocations: 2381)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:53:37 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1354)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1689)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (0.2ms)[0m  [1m[31mDELETE FROM "categories";
+DELETE FROM "cocktails";
+DELETE FROM "cocktails_ingredients";
+DELETE FROM "ingredients";
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (309456473, 'First category', '2022-03-23 15:58:58.866612', '2022-03-23 15:58:58.866612');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (908005739, 'Second category', '2022-03-23 15:58:58.866612', '2022-03-23 15:58:58.866612');
+INSERT INTO "categories" ("id", "name", "created_at", "updated_at") VALUES (607264868, 'Third category', '2022-03-23 15:58:58.866612', '2022-03-23 15:58:58.866612');
+INSERT INTO "cocktails" ("id", "name", "picture", "category_id", "instructions", "created_at", "updated_at") VALUES (309456473, 'cocktail', 'https://www.thecocktaildb.com/images/ingredients/gin.png', 309456473, 'instruction', '2022-03-23 15:58:58.867818', '2022-03-23 15:58:58.867818');
+INSERT INTO "cocktails_ingredients" ("cocktail_id", "ingredient_id") VALUES (309456473, 309456473);
+INSERT INTO "ingredients" ("id", "name", "description", "picture", "created_at", "updated_at") VALUES (309456473, 'ingredient', 'description', 'https://www.thecocktaildb.com/images/ingredients/gin.png', '2022-03-23 15:58:58.870219', '2022-03-23 15:58:58.870219')[0m
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_key_check[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+CocktailsTest: test_List_all_cocktails_from_a_category
+------------------------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:58:59 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.8ms | Allocations: 436)
+  Rendered categories/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1448)
+  Rendered layout layouts/application.html.erb (Duration: 43.6ms | Allocations: 24391)
+Completed 200 OK in 53ms (Views: 48.2ms | ActiveRecord: 0.2ms | Allocations: 30238)
+Started GET "/assets/application-3028d12144138869e29565759628e8f1da7fa343958b57395aedbc29bde52f07.css" for 127.0.0.1 at 2022-03-23 15:58:59 +0000
+Started GET "/assets/application-64408325c5ccf002f29ad72284321e665528142c4cf7867c15f48c2a05fb9f58.js" for 127.0.0.1 at 2022-03-23 15:58:59 +0000
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:58:59 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 1.1ms | Allocations: 587)
+  Rendered categories/show.html.erb (Duration: 6.5ms | Allocations: 3569)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 7293)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+CocktailsTest: test_List_categories
+-----------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.4ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1353)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 1686)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+CocktailsTest: test_List_ingredient_page
+----------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 456)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1353)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1686)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.4ms | Allocations: 205)
+  Rendered categories/show.html.erb (Duration: 2.4ms | Allocations: 745)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1143)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.7ms | Allocations: 261)
+  Rendered cocktails/show.html.erb (Duration: 8.9ms | Allocations: 5015)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 7413)
+Started GET "/categories/309456473/cocktails/309456473/ingredients/309456473" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "cocktail_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Ingredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.0ms | Allocations: 701)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.1ms | Allocations: 2544)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CocktailsTest: test_List_cocktail_page
+--------------------------------------
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+Started GET "/categories" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered collection of categories/_category.html.erb [3 times] (Duration: 0.3ms | Allocations: 174)
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 457)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1356)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1691)
+Started GET "/categories/309456473" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"309456473"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 309456473]]
+  Rendered collection of cocktails/_cocktail.html.erb [1 times] (Duration: 0.3ms | Allocations: 206)
+  Rendered categories/show.html.erb (Duration: 1.5ms | Allocations: 749)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1147)
+Started GET "/categories/309456473/cocktails/309456473" for 127.0.0.1 at 2022-03-23 15:59:00 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"309456473", "id"=>"309456473"}
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 309456473], ["id", 309456473], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 309456473], ["LIMIT", 1]]
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 309456473]]
+  Rendered collection of ingredients/_ingredient.html.erb [1 times] (Duration: 0.2ms | Allocations: 72)
+  Rendered cocktails/show.html.erb (Duration: 2.5ms | Allocations: 1306)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 2058)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
