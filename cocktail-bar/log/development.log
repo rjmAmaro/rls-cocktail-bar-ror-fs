@@ -9213,3 +9213,28 @@ Migrating to CreateJoinTableCocktailsIngredients (20220322170857)
   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
   [1m[36mCocktail Load (0.9ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails"[0m
   [1m[36mIngredient Load (0.8ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients"[0m
+Started GET "/" for ::1 at 2022-03-23 10:45:49 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/janfrank/.rvm/gems/ruby-3.0.3/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/janfrank/.rvm/gems/ruby-3.0.3/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 820)
+Completed 200 OK in 10ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 7656)
+
+
+Started GET "/" for ::1 at 2022-03-23 10:45:53 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/janfrank/.rvm/gems/ruby-3.0.3/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/janfrank/.rvm/gems/ruby-3.0.3/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 392)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 1406)
+
+
+Started GET "/categories" for ::1 at 2022-03-23 10:45:53 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  Rendered categories/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 147)
+  Rendered layout layouts/application.html.erb (Duration: 164.0ms | Allocations: 81811)
+Completed 200 OK in 175ms (Views: 165.6ms | ActiveRecord: 0.0ms | Allocations: 85790)
+
+
