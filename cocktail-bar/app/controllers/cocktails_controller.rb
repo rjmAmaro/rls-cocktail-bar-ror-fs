@@ -1,5 +1,6 @@
 class CocktailsController < ApplicationController
-  before_action :set_category, only: []
+  before_action :set_category, only: :show
+  before_action :set_cocktail, only: :show
 
   def show
 

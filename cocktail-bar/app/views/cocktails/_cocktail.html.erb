@@ -1,0 +1,6 @@
+<%= turbo_frame_tag cocktail do %>
+  <div class="cocktail">
+    <%= link_to cocktail.name, category_cocktail_path(id: cocktail, category_id: cocktail.category_id), data: { turbo_frame: "cocktails"} %>
+    <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
+  </div>
+<% end %>
