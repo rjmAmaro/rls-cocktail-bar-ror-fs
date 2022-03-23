@@ -3,7 +3,7 @@ class CocktailsController < ApplicationController
   before_action :set_cocktail, only: :show
 
   def show
-
+    @ingredients = Ingredient.find(params[:id])
   end
 
   def new

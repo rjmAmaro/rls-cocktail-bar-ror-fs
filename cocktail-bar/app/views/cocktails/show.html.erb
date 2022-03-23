@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "cocktails" do %>
+  <%= link_to sanitize("&larr; Back to #{@category.name}"), category_path(@category) %>
+  <div class="cocktail_main">
+    <h1><%= @cocktail.name.capitalize %></h1>
+    <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
+    <%= render @cocktail.ingredients, cocktail_id: @cocktail.id %>
+    <h3>Instructions</h3>
+    <%= @cocktail.instructions %>
+  </div>
+<% end %>
