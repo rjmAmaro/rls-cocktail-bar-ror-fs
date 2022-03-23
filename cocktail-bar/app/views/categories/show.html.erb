@@ -1,0 +1,7 @@
+<%= link_to sanitize("&larr; Back to Categories"), categories_path %>
+
+<%= turbo_frame_tag "cocktails" do %>
+  <%#= render "cocktails/empty_state" %>
+  <h1><%= @category.name %></h1><br>
+  <%= render @cocktails %>
+<% end %>
