@@ -1,0 +1,10 @@
+.header {
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-l);
+  color: white;
+  text-align: center;
+
+  @include media(tabletAndUp) {
+    margin-bottom: var(--space-xl);
+  }
+}

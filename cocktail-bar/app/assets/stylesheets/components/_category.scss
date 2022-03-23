@@ -1,0 +1,19 @@
+.cocktail_list {
+  background-color: var(--color-btn);
+  text-align: center;
+  //justify-content:center;
+  //align-items:center;
+  margin-left: 20%;
+  padding: var(--space-m);
+  overflow: auto;
+}
+
+.category {
+  display: block;
+  overflow: auto;
+  margin-top: var(--space-m)
+}
+
+.category a {
+  color: white;
+}

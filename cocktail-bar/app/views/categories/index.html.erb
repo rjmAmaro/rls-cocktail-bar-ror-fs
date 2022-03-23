@@ -1,1 +1,8 @@
-<p>hey</p>
+<div class="left_bar">
+  <h1>Categories</h1>
+  <%= render @categories %>
+</div>
+
+<div class="cocktail_list">
+  <%= turbo_frame_tag "cocktails" %>
+</div>
