@@ -2,4 +2,9 @@ first:
   name: cocktail
   picture: https://www.thecocktaildb.com/images/ingredients/gin.png
   instructions: instruction
+<<<<<<< HEAD
   category: first
+=======
+  category: first
+  ingredients: first
+>>>>>>> UI_11
