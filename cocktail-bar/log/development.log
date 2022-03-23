@@ -11324,3 +11324,659 @@ Processing by CategoriesController#show as HTML
 Completed 200 OK in 78ms (Views: 28.2ms | ActiveRecord: 2.4ms | Allocations: 35752)
 
 
+Started GET "/" for ::1 at 2022-03-23 13:43:32 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 1.4ms | Allocations: 727)
+  Rendered categories/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3464)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 5702)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 1.5ms | Allocations: 8691)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 13:43:33 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (1.7ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 13.7ms | Allocations: 14955)
+  Rendered categories/show.html.erb (Duration: 29.5ms | Allocations: 20934)
+Completed 200 OK in 63ms (Views: 28.5ms | ActiveRecord: 2.2ms | Allocations: 35960)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:43:35 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.7ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.2ms | Allocations: 6533)
+
+
+  
+NoMethodError (undefined method `ordered' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/" for ::1 at 2022-03-23 13:48:58 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 0.6ms | Allocations: 596)
+  Rendered categories/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 3525)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 5539)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 3.3ms | Allocations: 8192)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 13:48:59 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 14.8ms | Allocations: 14782)
+  Rendered categories/show.html.erb (Duration: 39.4ms | Allocations: 20874)
+Completed 200 OK in 66ms (Views: 37.7ms | ActiveRecord: 3.0ms | Allocations: 35629)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:49:00 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" IN (?)[0m  [["id", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 404 Not Found in 14ms (ActiveRecord: 1.2ms | Allocations: 5259)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find all Ingredients with 'id': (1, {:order=>"name"}) (found 1 results, but was looking for 2).):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:49:01 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" IN (?)[0m  [["id", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.5ms | Allocations: 3077)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find all Ingredients with 'id': (1, {:order=>"name"}) (found 1 results, but was looking for 2).):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/" for ::1 at 2022-03-23 13:50:21 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 0.5ms | Allocations: 596)
+  Rendered categories/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 3525)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 5530)
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 1.0ms | Allocations: 8183)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 13:50:21 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 15.9ms | Allocations: 14782)
+  Rendered categories/show.html.erb (Duration: 27.0ms | Allocations: 20896)
+Completed 200 OK in 62ms (Views: 25.0ms | ActiveRecord: 2.8ms | Allocations: 35625)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:50:22 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.4ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.3ms | Allocations: 6894)
+
+
+  
+NoMethodError (undefined method `sort_by' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/" for ::1 at 2022-03-23 13:52:33 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 0.4ms | Allocations: 596)
+  Rendered categories/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 3525)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 5530)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 1.1ms | Allocations: 8182)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 13:52:34 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 14.6ms | Allocations: 14782)
+  Rendered categories/show.html.erb (Duration: 26.8ms | Allocations: 20874)
+Completed 200 OK in 54ms (Views: 24.6ms | ActiveRecord: 3.0ms | Allocations: 35599)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:52:35 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 13.8ms | Allocations: 6897)
+
+
+  
+NoMethodError (undefined method `sort' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/" for ::1 at 2022-03-23 13:53:29 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 0.5ms | Allocations: 596)
+  Rendered categories/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 3525)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 5551)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.8ms | Allocations: 8203)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 13:53:30 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.0ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 21.9ms | Allocations: 14782)
+  Rendered categories/show.html.erb (Duration: 31.9ms | Allocations: 20874)
+Completed 200 OK in 57ms (Views: 29.9ms | ActiveRecord: 2.8ms | Allocations: 35600)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 13:53:31 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:51:in `set_category'
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:47:in `set_cocktail'
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.4ms | Allocations: 6917)
+
+
+  
+NoMethodError (undefined method `sort' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:7:in `show'
+Started GET "/" for ::1 at 2022-03-23 14:03:24 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 7.1ms | Allocations: 727)
+  Rendered categories/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 3464)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 5693)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.9ms | Allocations: 8687)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:03:25 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 14.9ms | Allocations: 14955)
+  Rendered categories/show.html.erb (Duration: 24.6ms | Allocations: 20990)
+Completed 200 OK in 51ms (Views: 23.0ms | ActiveRecord: 2.6ms | Allocations: 35793)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:03:26 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (1.6ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 1]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [9 times] (Duration: 1.5ms | Allocations: 856)
+  Rendered cocktails/show.html.erb (Duration: 11.7ms | Allocations: 6302)
+Completed 200 OK in 25ms (Views: 11.0ms | ActiveRecord: 2.9ms | Allocations: 11155)
+
+
+Started GET "/" for ::1 at 2022-03-23 14:04:25 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 2.5ms | Allocations: 716)
+  Rendered categories/index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 1874)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 4095)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.3ms | Allocations: 5249)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:04:26 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.8ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 21.2ms | Allocations: 14914)
+  Rendered categories/show.html.erb (Duration: 32.6ms | Allocations: 17910)
+Completed 200 OK in 37ms (Views: 32.5ms | ActiveRecord: 1.0ms | Allocations: 18801)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:04:27 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  Rendered cocktails/show.html.erb (Duration: 4.4ms | Allocations: 1688)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms | Allocations: 4211)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    3:   <div class="cocktail_main">
+    4:     <h1><%= @cocktail.name.titleize %></h1>
+    5:     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
+    6:     <%= render @cocktail.ingredients.sort_by(:name), cocktail_id: @cocktail.id %>
+    7:     <h3>Instructions</h3>
+    8:     <%= @cocktail.instructions %>
+    9:   </div>
+  
+app/views/cocktails/show.html.erb:6:in `sort_by'
+app/views/cocktails/show.html.erb:6
+app/views/cocktails/show.html.erb:1
+Started GET "/" for ::1 at 2022-03-23 14:04:59 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 2.0ms | Allocations: 716)
+  Rendered categories/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 1875)
+  Rendered layout layouts/application.html.erb (Duration: 29.6ms | Allocations: 4108)
+Completed 200 OK in 37ms (Views: 33.3ms | ActiveRecord: 0.8ms | Allocations: 5255)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:05:00 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.7ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 21.8ms | Allocations: 14910)
+  Rendered categories/show.html.erb (Duration: 33.1ms | Allocations: 17906)
+Completed 200 OK in 39ms (Views: 33.2ms | ActiveRecord: 1.2ms | Allocations: 18797)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:05:01 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.4ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 1]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort_by'
+  Rendered cocktails/show.html.erb (Duration: 8.3ms | Allocations: 3166)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.9ms | Allocations: 5674)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    3:   <div class="cocktail_main">
+    4:     <h1><%= @cocktail.name.titleize %></h1>
+    5:     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
+    6:     <%= render @cocktail.ingredients.sort_by { |a, b| a.name <=> b.name }, cocktail_id: @cocktail.id %>
+    7:     <h3>Instructions</h3>
+    8:     <%= @cocktail.instructions %>
+    9:   </div>
+  
+app/views/cocktails/show.html.erb:6
+app/views/cocktails/show.html.erb:6:in `sort_by'
+app/views/cocktails/show.html.erb:6
+app/views/cocktails/show.html.erb:1
+Started GET "/" for ::1 at 2022-03-23 14:05:12 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 2.0ms | Allocations: 716)
+  Rendered categories/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1875)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 4126)
+Completed 200 OK in 25ms (Views: 20.7ms | ActiveRecord: 0.8ms | Allocations: 5273)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:05:12 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.8ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 20.5ms | Allocations: 14910)
+  Rendered categories/show.html.erb (Duration: 32.2ms | Allocations: 17906)
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 1.0ms | Allocations: 18797)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:05:13 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.4ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 1]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [9 times] (Duration: 2.6ms | Allocations: 837)
+  Rendered cocktails/show.html.erb (Duration: 13.5ms | Allocations: 2805)
+Completed 200 OK in 25ms (Views: 15.5ms | ActiveRecord: 1.0ms | Allocations: 5356)
+
+
+Started GET "/categories/1/cocktails/1/ingredients/8" for ::1 at 2022-03-23 14:06:51 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"1", "cocktail_id"=>"1", "id"=>"8"}
+  [1m[36mIngredient Load (0.9ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:16:in `set_ingredient'
+  [1m[36mCocktail Load (2.5ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:12:in `set_cocktail'
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 1.8ms | Allocations: 559)
+Completed 200 OK in 13ms (Views: 3.7ms | ActiveRecord: 3.4ms | Allocations: 3163)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:06:52 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (1.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 1]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [9 times] (Duration: 1.8ms | Allocations: 715)
+  Rendered cocktails/show.html.erb (Duration: 7.4ms | Allocations: 2070)
+Completed 200 OK in 21ms (Views: 7.1ms | ActiveRecord: 1.6ms | Allocations: 4210)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:06:54 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (2.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 25.5ms | Allocations: 14717)
+  Rendered categories/show.html.erb (Duration: 33.7ms | Allocations: 17346)
+Completed 200 OK in 38ms (Views: 32.5ms | ActiveRecord: 2.4ms | Allocations: 18137)
+
+
+Started GET "/categories/1/cocktails/6" for ::1 at 2022-03-23 14:06:55 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"6"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (1.4ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 6]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [3 times] (Duration: 0.6ms | Allocations: 262)
+  Rendered cocktails/show.html.erb (Duration: 6.4ms | Allocations: 1503)
+Completed 200 OK in 14ms (Views: 6.0ms | ActiveRecord: 1.9ms | Allocations: 3479)
+
+
+Started GET "/categories/1/cocktails/6/ingredients/23" for ::1 at 2022-03-23 14:06:56 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"1", "cocktail_id"=>"6", "id"=>"23"}
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:16:in `set_ingredient'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:12:in `set_cocktail'
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.7ms | Allocations: 228)
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 1456)
+
+
+Started GET "/categories/1/cocktails/6" for ::1 at 2022-03-23 14:06:57 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"6"}
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 6]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [3 times] (Duration: 0.6ms | Allocations: 262)
+  Rendered cocktails/show.html.erb (Duration: 5.1ms | Allocations: 1503)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 1.5ms | Allocations: 3479)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:06:58 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (1.5ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 18.6ms | Allocations: 14711)
+  Rendered categories/show.html.erb (Duration: 26.1ms | Allocations: 17338)
+Completed 200 OK in 30ms (Views: 25.4ms | ActiveRecord: 1.8ms | Allocations: 18127)
+
+
+Started GET "/categories/3" for ::1 at 2022-03-23 14:07:03 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.7ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [17 times] (Duration: 5.2ms | Allocations: 2654)
+  Rendered categories/show.html.erb (Duration: 10.8ms | Allocations: 3886)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 1.2ms | Allocations: 4674)
+
+
+Started GET "/categories/3/cocktails/201" for ::1 at 2022-03-23 14:07:04 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"3", "id"=>"201"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 3], ["id", 201], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 201], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (1.0ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 201]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [3 times] (Duration: 0.9ms | Allocations: 237)
+  Rendered cocktails/show.html.erb (Duration: 5.9ms | Allocations: 1446)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 1.5ms | Allocations: 3420)
+
+
+Started GET "/categories/3/cocktails/201/ingredients/197" for ::1 at 2022-03-23 14:07:05 +0000
+Processing by IngredientsController#show as HTML
+  Parameters: {"category_id"=>"3", "cocktail_id"=>"201", "id"=>"197"}
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 197], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:16:in `set_ingredient'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."id" = ? LIMIT ?[0m  [["id", 201], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:12:in `set_cocktail'
+  Rendering ingredients/show.html.erb
+  Rendered ingredients/show.html.erb (Duration: 2.0ms | Allocations: 227)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1453)
+
+
+Started GET "/categories/3/cocktails/201" for ::1 at 2022-03-23 14:07:06 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"3", "id"=>"201"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 3], ["id", 201], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 201], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+  Rendering cocktails/show.html.erb
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cocktails_ingredients" ON "ingredients"."id" = "cocktails_ingredients"."ingredient_id" WHERE "cocktails_ingredients"."cocktail_id" = ?[0m  [["cocktail_id", 201]]
+  ↳ app/views/cocktails/show.html.erb:6:in `sort'
+  Rendered collection of ingredients/_ingredient.html.erb [3 times] (Duration: 0.7ms | Allocations: 238)
+  Rendered cocktails/show.html.erb (Duration: 5.1ms | Allocations: 1448)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 0.8ms | Allocations: 3424)
+
+
+Started GET "/categories/3" for ::1 at 2022-03-23 14:07:07 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (0.3ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 3]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [17 times] (Duration: 5.7ms | Allocations: 2654)
+  Rendered categories/show.html.erb (Duration: 9.9ms | Allocations: 3886)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 0.5ms | Allocations: 4674)
+
+
+Started GET "/" for ::1 at 2022-03-23 14:08:48 +0000
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/categories/index.html.erb:3
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:3
+  Rendered collection of categories/_category.html.erb [11 times] (Duration: 0.8ms | Allocations: 727)
+  Rendered categories/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 3894)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 6117)
+Completed 200 OK in 16ms (Views: 9.2ms | ActiveRecord: 1.0ms | Allocations: 9113)
+
+
+Started GET "/categories/1" for ::1 at 2022-03-23 14:08:49 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:45:in `set_category'
+  Rendering categories/show.html.erb
+  [1m[36mCocktail Load (1.6ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ?[0m  [["category_id", 1]]
+  ↳ app/views/categories/show.html.erb:6
+  Rendered collection of cocktails/_cocktail.html.erb [99 times] (Duration: 13.2ms | Allocations: 14955)
+  Rendered categories/show.html.erb (Duration: 23.7ms | Allocations: 21323)
+Completed 200 OK in 49ms (Views: 21.7ms | ActiveRecord: 3.0ms | Allocations: 36121)
+
+
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:08:50 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.2ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.0ms | Allocations: 6896)
+
+
+  
+NoMethodError (undefined method `sort' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:6:in `show'
+Started GET "/categories/1/cocktails/1" for ::1 at 2022-03-23 14:08:51 +0000
+Processing by CocktailsController#show as HTML
+  Parameters: {"category_id"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:50:in `set_category'
+  [1m[36mCocktail Load (0.1ms)[0m  [1m[34mSELECT "cocktails".* FROM "cocktails" WHERE "cocktails"."category_id" = ? AND "cocktails"."id" = ? LIMIT ?[0m  [["category_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:46:in `set_cocktail'
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cocktails_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.4ms | Allocations: 4228)
+
+
+  
+NoMethodError (undefined method `sort' for #<Ingredient id: 1, name: "Gin", description: "Gin is a distilled alcoholic drink that derives it...", picture: "www.thecocktaildb.com/images/ingredients/gin-Mediu...", created_at: "2022-03-22 22:57:13.341226000 +0000", updated_at: "2022-03-22 22:57:13.341226000 +0000">):
+  
+app/controllers/cocktails_controller.rb:6:in `show'

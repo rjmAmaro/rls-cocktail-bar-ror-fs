@@ -3,7 +3,7 @@
   <div class="cocktail_main">
     <h1><%= @cocktail.name.titleize %></h1>
     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
-    <%= render @cocktail.ingredients, cocktail_id: @cocktail.id %>
+    <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name }, cocktail_id: @cocktail.id %>
     <h3>Instructions</h3>
     <%= @cocktail.instructions %>
   </div>

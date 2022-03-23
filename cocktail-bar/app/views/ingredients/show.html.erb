@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "cocktails" do %>
+  <%= link_to sanitize("&larr; Back to #{@cocktail.name}"), category_cocktail_path(id: @cocktail, category_id: @cocktail.category_id) %>
+
+  <h1><%= @ingredient.name.capitalize %></h1>
+<% end %>
