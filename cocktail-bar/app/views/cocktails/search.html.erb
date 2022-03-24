@@ -1,0 +1,4 @@
+<%= turbo_frame_tag 'cocktails' do %>
+  <h1> <%= params[:search].to_s != '' ? "Search results for: " + params[:search] : "All Cocktails" %></h1><br>
+  <%= render @search_result %>
+<% end %>

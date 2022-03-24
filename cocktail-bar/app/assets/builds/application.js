@@ -1,12 +1,17 @@
 (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __esm = (fn, res) => function __init() {
     return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
   };
   var __export = (target, all) => {
     for (var name in all)
       __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __publicField = (obj, key, value) => {
+    __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+    return value;
   };
 
   // node_modules/@rails/actioncable/src/adapters.js
@@ -5665,14 +5670,38 @@
   application.debug = false;
   window.Stimulus = application;
 
-  // app/javascript/controllers/hello_controller.js
-  var hello_controller_default = class extends Controller {
-    connect() {
-      this.element.textContent = "Hello World!";
+  // app/javascript/controllers/visibility_controller.js
+  var visibility_controller_default = class extends Controller {
+    hide = true;
+    showTargets() {
+      this.hideableTargets.forEach((el) => {
+        el.hidden = false;
+      });
+    }
+    hideTargets() {
+      this.hideableTargets.forEach((el) => {
+        el.hidden = true;
+      });
+    }
+    changeColorTargets() {
+    }
+    toggleTargets() {
+      this.hideableTargets.forEach((el) => {
+        el.hidden = !el.hidden;
+        this.buttonTargets.forEach((b) => {
+          var btn = document.getElementsByClassName(b.className)[0];
+          if (el.hidden) {
+            btn.style.backgroundColor = "#292B38FF";
+          } else {
+            btn.style.backgroundColor = "#3B3D78FF";
+          }
+        });
+      });
     }
   };
+  __publicField(visibility_controller_default, "targets", ["hideable", "button"]);
 
   // app/javascript/controllers/index.js
-  application.register("hello", hello_controller_default);
+  application.register("visibility", visibility_controller_default);
 })();
 //# sourceMappingURL=application.js.map

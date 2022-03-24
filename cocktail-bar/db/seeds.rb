@@ -60,7 +60,7 @@ parsed_categories.each do |category|
           desc = 'Wow. Such empty.'
         end
 
-        ingredient = Ingredient.create(name: parsed_ing["strIngredient"], description: desc, picture: "www.thecocktaildb.com/images/ingredients/#{parsed_ing['strIngredient'].gsub(' ', '_').downcase}-Medium.png")
+        ingredient = Ingredient.create(name: parsed_ing["strIngredient"], description: desc, picture: "www.thecocktaildb.com/images/ingredients/#{parsed_ing['strIngredient'].gsub(' ', '%20').downcase}.png")
         ingredient.save
       end
 
@@ -84,16 +84,4 @@ end
 #
 #   if ingredient['strIngredient1'] == "J\u00E4germeister"
 #     ing = RestClient.get("www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=278")
-#   elsif ingredient['strIngredient1'] == "A\u00F1ejo rum"
-#     ing = RestClient.get("www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=37")
-#   else
-#     ing = RestClient.get "www.thecocktaildb.com/api/json/v1/1/search.php?i=#{ingredient['strIngredient1'].gsub(' ', '_').downcase}"
-#   end
-#
-#   parsed_ing = JSON.parse(ing.body)['ingredients'][0]
-#
-#   ingred = Ingredient.create(name: parsed_ing['strIngredient'].capitalize, description: parsed_ing['strDescription'], picture: "www.thecocktaildb.com/images/ingredients/#{parsed_ing['strIngredient'].downcase}-Medium.png")
-#
-# end
-
 

@@ -5,4 +5,5 @@ class Cocktail < ApplicationRecord
   validates :name, presence: true
   validates :picture, presence: true
   validates :instructions, presence: true
+
 end
