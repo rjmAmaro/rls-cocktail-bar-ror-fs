@@ -1,8 +1,12 @@
 <div class="left_bar">
   <h1>Categories</h1>
-  <%= render @categories %>
+
+  <%= link_to "Add cocktail", '#', class: "add_cocktail_btn" %>
+  
+  <div>
+    <%= render @categories %>
+  </div>
 </div>
-<% hide = true %>
 
 <div class="main">
   <div id="options" data-controller="visibility">
@@ -15,7 +19,7 @@
     <div class="search_bar" id="search_bar_id" data-visibility-target="hideable" hidden>
 
       <%= form_tag(search_path, method: :get, class: "search_form_tag", data: { turbo_frame: 'cocktails' }) do %>
-        <%= text_field_tag(:search, params[:search], class: "search_text_field", placeholder: "Search for a cocktail...", data: { turbo_frame: 'cocktails'}) %>
+        <%= text_field_tag(:search, params[:search], class: "search_text_field", placeholder: "Search for a cocktail...", data: { turbo_frame: 'cocktails' }) %>
 
         <%#= submit_tag("Search") %>
       <% end %>
