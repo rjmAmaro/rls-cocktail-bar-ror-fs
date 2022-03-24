@@ -67,4 +67,16 @@ class CocktailsController < ApplicationController
     @category = Category.find(params[:category_id])
   end
 
+  def like
+
+  end
+
+  def dislike
+
+  end
+
+  def rate
+
+  end
+
 end

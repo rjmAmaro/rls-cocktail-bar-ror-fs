@@ -23,7 +23,7 @@ parsed_categories.each do |category|
     #puts drink['idDrink']
     parsed_drink_info = JSON.parse(drink_info.body)['drinks'][0]
 
-    cocktail = Cocktail.create(name: parsed_drink_info['strDrink'], picture: parsed_drink_info['strDrinkThumb'], instructions: parsed_drink_info['strInstructions'], category: new_category)
+    cocktail = Cocktail.create(name: parsed_drink_info['strDrink'], picture: parsed_drink_info['strDrinkThumb'], instructions: parsed_drink_info['strInstructions'], category: new_category, like: 0 ,rating: 0)
 
 
 

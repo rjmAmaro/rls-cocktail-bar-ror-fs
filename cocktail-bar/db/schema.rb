@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2022_03_22_170857) do
     t.text "picture", null: false
     t.integer "category_id", null: false
     t.text "instructions", null: false
+    t.integer "like", null: false
+    t.integer "rating", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_cocktails_on_category_id"
