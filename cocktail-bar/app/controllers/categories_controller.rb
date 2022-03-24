@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
   def index
+    @hide = true
     @categories = Category.all
   end
 

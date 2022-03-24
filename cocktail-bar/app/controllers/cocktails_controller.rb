@@ -2,8 +2,25 @@ class CocktailsController < ApplicationController
   before_action :set_category, only: :show
   before_action :set_cocktail, only: :show
 
+  def index
+    @cocktails = Cocktail.search_by_name(params[:search_by_name])
+  end
+
+  def search
+      if params[:search]
+        @search_result = Cocktail.all.filter do |cocktail|
+          cocktail.name.downcase.include?(params[:search].to_s.downcase) || cocktail.ingredients.any? do |ingredient|
+            ingredient.name.downcase.include?(params[:search].to_s.downcase)
+          end
+        end
+        @search_result.sort! { |a,b| a.name <=> b.name }
+      else
+        @search_result = Cocktail.all
+      end
+  end
+
   def show
-    @ingredients = Ingredient.find(params[:id])
+    @ingredients = @cocktail.ingredients
   end
 
   def new
@@ -39,7 +56,7 @@ class CocktailsController < ApplicationController
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :picture, :description)
+    params.require(:cocktail).permit(:name, :picture, :description, :search_by_name)
   end
 
   def set_cocktail

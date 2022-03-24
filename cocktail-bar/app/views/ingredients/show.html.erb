@@ -2,6 +2,12 @@
   <%= link_to sanitize("&larr; Back to #{@cocktail.name}"), category_cocktail_path(id: @cocktail, category_id: @cocktail.category_id) %>
 
   <h1><%= @ingredient.name.capitalize %></h1>
-  <%= image_tag(@ingredient.picture, alt: @ingredient.name, height: 300, width: 300) %>
-  <h1><%= @ingredient.description %></h1>
+
+  <%
+    img_url = "https://" + @ingredient.picture
+    img_url = "no_image.png" unless image_valid?(img_url)
+  %>
+  <%= image_tag(img_url, alt: @ingredient.name, height: 300, width: 300) %>
+  <%= @ingredient.description.capitalize %>
+
 <% end %>
