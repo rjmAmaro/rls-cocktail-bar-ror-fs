@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get 'cocktail_form', to: 'cocktails#cocktail_form'
   put 'set_like', to: 'cocktails#set_like'
   put 'set_like_show', to: 'cocktails#set_like_show'
-  put 'set_rate', to: 'cocktails#set_rate'
-
+  put 'set_rate_one', to: 'cocktails#set_rate_one'
+  put 'set_rate_two', to: 'cocktails#set_rate_two'
+  put 'set_rate_three', to: 'cocktails#set_rate_three'
+  put 'set_rate_four', to: 'cocktails#set_rate_four'
+  put 'set_rate_five', to: 'cocktails#set_rate_five'
   resources :categories do
     resources :cocktails do
       get 'add_ingredient_form', to: 'cocktails#add_ingredient_form'

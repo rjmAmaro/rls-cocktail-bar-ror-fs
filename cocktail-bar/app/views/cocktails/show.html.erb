@@ -1,19 +1,12 @@
 <%= turbo_frame_tag "cocktails" do %>
+  
   <%= turbo_stream_from "ingredients" %>
   <%= link_to sanitize("&larr; Go to #{@category.name}"), category_path(@category), class: "btn"%>
   <div class="cocktail_main">
     <h1><%= @cocktail.name.titleize %></h1>
     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
 
-    <h3>Rating</h3>
-    <div class="star_btn" id="star_btn_id" data-visibility-target="button" >
-      <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 1/5", height: 24, width: 24) %></a>
-      <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 2/5", height: 24, width: 24) %></a>
-      <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 3/5", height: 24, width: 24) %></a>
-      <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 4/5", height: 24, width: 24) %></a>
-      <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 5/5", height: 24, width: 24) %></a>
-      <%#= link_to image_tag("star_empty.svg") %>
-    </div>
+    
     <div id="ingredients">
       <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name } %>
     </div>
