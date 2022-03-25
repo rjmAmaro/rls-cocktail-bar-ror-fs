@@ -1,23 +1,19 @@
 class CocktailsController < ApplicationController
-  before_action :set_category, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
-  before_action :set_cocktail, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
-  @img_path="heart_empty.svg"
-
-  def index
-    @cocktails = Cocktail.search_by_name(params[:search_by_name])
-  end
+  before_action :set_category, only: %i[show destroy set_like set_rate set_like_show]
+  before_action :set_cocktail, only: %i[show destroy set_like set_rate set_like_show]
+  before_action :create_category, only: [:create]
 
   def search
-      if params[:search]
-        @search_result = Cocktail.all.filter do |cocktail|
-          cocktail.name.downcase.include?(params[:search].to_s.downcase) || cocktail.ingredients.any? do |ingredient|
-            ingredient.name.downcase.include?(params[:search].to_s.downcase)
-          end
+    if params[:search]
+      @search_result = Cocktail.all.filter do |cocktail|
+        cocktail.name.downcase.include?(params[:search].to_s.downcase) || cocktail.ingredients.any? do |ingredient|
+          ingredient.name.downcase.include?(params[:search].to_s.downcase)
         end
-        @search_result.sort! { |a,b| a.name <=> b.name }
-      else
-        @search_result = Cocktail.all
       end
+      @search_result.sort! { |a, b| a.name <=> b.name }
+    else
+      @search_result = Cocktail.all
+    end
   end
 
   def show
@@ -25,14 +21,16 @@ class CocktailsController < ApplicationController
   end
 
   def new
-    @cocktail = @category.cocktails.build
+    # @cocktail = @category.cocktails.build
   end
 
   def create
-    @cocktail = @category.cocktails.build(cocktail_params)
+    @cocktail = @category.cocktails.build(name: params[:name], instructions: params[:instructions],
+                                          picture: params[:picture])
 
     if @cocktail.save
-      redirect_to categories_path, notice: "Cocktail added successfully."
+      redirect_to category_cocktail_path(category_id: @category.id, id: @cocktail.id),
+                  notice: 'Cocktail added successfully.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -54,22 +52,39 @@ class CocktailsController < ApplicationController
     redirect_to categories_path, notice: 'Cocktail deleted successfully.'
   end
 
-  def set_like
-    if @cocktail.like == 1
-      @cocktail.like = 0
+  def add_ingredient_form
+    @category = Category.find(params[:category_id])
+    @cocktail = @category.cocktails.find(params[:cocktail_id])
+  end
+
+  def add_ingredient
+    @cocktail = Cocktail.find(params[:id])
+    new_ingredient = Ingredient.find(params[:ingredient])
+    if @cocktail.ingredients.any? { |ingredient| ingredient == new_ingredient }
+      redirect_to :back, notice: 'Ingredient already present in this cocktail.'
     else
-      @cocktail.like = 1
+      @cocktail.ingredients << new_ingredient
+      @cocktail.save
+      redirect_to :back, notice: 'Ingredient added to cocktail successfully.'
     end
+  end
+
+  def set_like
+    @cocktail.like = if @cocktail.like == 1
+                       0
+                     else
+                       1
+                     end
     @cocktail.save
     render @category.cocktails
   end
 
   def set_like_show
-    if @cocktail.like == 1
-      @cocktail.like = 0
-    else
-      @cocktail.like = 1
-    end
+    @cocktail.like = if @cocktail.like == 1
+                       0
+                     else
+                       1
+                     end
     @cocktail.save
     redirect_to categories_path
   end
@@ -80,15 +95,29 @@ class CocktailsController < ApplicationController
 
   helper_method :check_like
 
-
-  def set_rate
-
-  end
+  def set_rate; end
 
   private
 
+  def create_category
+    if params[:new_category]
+      if Category.all.any? { |category| category.name == params[:category_name] }
+        redirect_to :back, notice: 'There already exists a category with that name.'
+      elsif Cocktail.all.any? { |cocktail| cocktail.name == params[:name] }
+        redirect_to :back, notice: 'There already exists a cocktail with that name.'
+      elsif !helpers.image_valid?(params[:picture])
+        redirect_to :back, notice: 'The provided image url is not valid.'
+      else
+        @category = Category.create(name: params[:category_name])
+        @category.save
+      end
+    else
+      @category = Category.find(params[:new_cocktail_category])
+    end
+  end
+
   def cocktail_params
-    params.require(:cocktail).permit(:name, :picture, :description, :search_by_name)
+    params.require(:cocktail).permit(:name, :picture, :instructions, :search_by_name)
   end
 
   def set_cocktail

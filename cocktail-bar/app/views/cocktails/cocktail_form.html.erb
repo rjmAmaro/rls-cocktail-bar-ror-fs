@@ -1,0 +1,39 @@
+<%= turbo_frame_tag 'cocktails' do %>
+
+  <div class="cocktail_main">
+    <h1 class="header">Add cocktail</h1>
+    <%= form_tag(create_path, method: :post, class: 'form') do %>
+      <%= label_tag(:new_category, "New category?", class: 'checkbox_label') %>
+      <%= check_box_tag(:new_category, 1, false, id: "checkbox", class: 'checkbox') %>
+
+      <div id="category-list">
+        Category: <%= select_tag :new_cocktail_category, options_from_collection_for_select(Category.all, "id", "name"), class: 'category_select' %><br>
+      </div>
+      <div id="new-category-name" style="display: none">
+        <%= text_field_tag(:category_name, params[:category_name], placeholder: "New category name...", class: 'cocktail_form_txt') %>
+      </div>
+      <%= text_field_tag(:name, params[:name], placeholder: "Cocktail name...", class: 'cocktail_form_txt') %><br>
+      <%= text_field_tag(:picture, params[:picture], placeholder: "Cocktail picture url...", class: 'cocktail_form_txt') %><br>
+      <%= text_area_tag(:instructions, params[:instructions], placeholder: "How to make cocktail instructions...", class: 'cocktail_form_txt') %>
+      <br>
+      <%= submit_tag "Submit", class: 'btn submit_cocktail' %>
+    <% end %>
+  </div>
+
+  <script type="text/javascript">
+      const checkbox = document.getElementById('checkbox');
+      const details_div = document.getElementById('category-list');
+      const new_category = document.getElementById('new-category-name');
+      checkbox.onchange = function () {
+          if (this.checked) {
+              new_category.style.display = 'block';
+              details_div.style.display = 'none';
+          } else {
+              details_div.style.display = 'block';
+              new_category.style.display = 'none';
+          }
+      };
+  </script>
+
+<% end %>
+

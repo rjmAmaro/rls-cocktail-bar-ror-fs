@@ -1,13 +1,13 @@
 <%= turbo_frame_tag "cocktails" do %>
   <%= link_to sanitize("&larr; Back to #{@cocktail.name}"), category_cocktail_path(id: @cocktail, category_id: @cocktail.category_id) %>
+  <div class="cocktail_main">
+    <h1><%= @ingredient.name.capitalize %></h1>
 
-  <h1><%= @ingredient.name.capitalize %></h1>
-
-  <%
-    img_url = "https://" + @ingredient.picture
-    img_url = "no_image.png" unless image_valid?(img_url)
-  %>
-  <%= image_tag(img_url, alt: @ingredient.name, height: 300, width: 300) %>
-  <%= @ingredient.description.capitalize %>
-
+    <%
+      img_url = "https://" + @ingredient.picture
+      img_url = "no_image.png" unless image_valid?(img_url)
+    %>
+    <%= image_tag(img_url, alt: @ingredient.name, height: 300, width: 300) %>
+    <%= @ingredient.description.capitalize %>
+  </div>
 <% end %>

@@ -1,32 +1,27 @@
-<div class="left_bar">
-  <h1>Categories</h1>
+<div id="options" data-controller="visibility">
+  <div class="left_bar">
+    <h1>Categories</h1>
 
-  <%= link_to "Add cocktail", '#', class: "add_cocktail_btn" %>
-  
-  <div>
-    <%= render @categories %>
+    <%= link_to "Add cocktail", cocktail_form_path, class: "add_cocktail_btn", data: { turbo_frame: 'cocktails' } %>
+    <!--    <a data-action="visibility#toggleForm" class="add_cocktail_btn">Add cocktail</a>-->
+    <div>
+      <%= render @categories %>
+    </div>
   </div>
-</div>
 
-<div class="main">
-  <div id="options" data-controller="visibility">
+  <div class="main">
     <div class="search_btn" id="search_btn_id" data-visibility-target="button">
-      <a data-action="visibility#changeLike"><%= image_tag('search.png') %></a>
-      <%#= link_to image_tag("search.png") %>
+
+      <a data-action="visibility#toggleTargets visibility#changeColorTargets"><%= image_tag('search.png') %></a>
+
     </div>
 
-<%#= turbo_frame_tag 'search_bar' do %>
     <div class="search_bar" id="search_bar_id" data-visibility-target="hideable" hidden>
-
       <%= form_tag(search_path, method: :get, class: "search_form_tag", data: { turbo_frame: 'cocktails' }) do %>
         <%= text_field_tag(:search, params[:search], class: "search_text_field", placeholder: "Search for a cocktail...", data: { turbo_frame: 'cocktails' }) %>
-
-        <%#= submit_tag("Search") %>
       <% end %>
     </div>
-<%# end %>
   </div>
-
 
   <div class="cocktail_list">
     <%= turbo_frame_tag "cocktails" %>

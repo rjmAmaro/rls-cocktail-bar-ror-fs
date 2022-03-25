@@ -5685,6 +5685,11 @@
     }
     changeColorTargets() {
     }
+    toggleForm() {
+      this.formTargets.forEach((el) => {
+        el.hidden = !el.hidden;
+      });
+    }
     toggleTargets() {
       this.hideableTargets.forEach((el) => {
         el.hidden = !el.hidden;
@@ -5699,7 +5704,7 @@
       });
     }
   };
-  __publicField(visibility_controller_default, "targets", ["hideable", "button"]);
+  __publicField(visibility_controller_default, "targets", ["hideable", "button", "form"]);
 
   // app/javascript/controllers/index.js
   application.register("visibility", visibility_controller_default);
