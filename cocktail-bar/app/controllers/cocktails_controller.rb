@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
-  before_action :set_category, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
-  before_action :set_cocktail, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
+  before_action :set_category, only: [:show, :set_like, :check_like, :set_like_show, :set_rate_one, :set_rate_two, :set_rate_three, :set_rate_four, :set_rate_five]
+  before_action :set_cocktail, only: [:show, :set_like, :check_like, :set_like_show, :set_rate_one, :set_rate_two, :set_rate_three, :set_rate_four, :set_rate_five]
   @img_path="heart_empty.svg"
 
   def index
@@ -81,8 +81,34 @@ class CocktailsController < ApplicationController
   helper_method :check_like
 
 
-  def set_rate
+  def set_rate_one
+    @cocktail.rating = 1
+    @cocktail.save
+    render @category.cocktails
+  end
 
+  def set_rate_two
+    @cocktail.rating = 2
+    @cocktail.save
+    render @category.cocktails
+  end
+
+  def set_rate_three
+    @cocktail.rating = 3
+    @cocktail.save
+    render @category.cocktails
+  end
+
+  def set_rate_four
+    @cocktail.rating = 4
+    @cocktail.save
+    render @category.cocktails
+  end
+
+  def set_rate_five
+    @cocktail.rating = 5
+    @cocktail.save
+    render @category.cocktails
   end
 
   private

@@ -4,8 +4,55 @@
     <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
     <div class="heart_btn" id="heart_btn_id" data-visibility-target="button">
       <%= form_tag(set_like_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
-        <%= if cocktail.like == 0 then image_submit_tag('heart_empty.svg', alt: "Like", height: 24, width: 24) else image_submit_tag('heart_full.svg', alt: "Like", height: 24, width: 24) end%>
+        <%= if cocktail.like == 0 then
+              image_submit_tag('heart_empty.svg', alt: "Like", height: 24, width: 24)
+            else
+              image_submit_tag('heart_full.svg', alt: "Like", height: 24, width: 24)
+            end %>
       <% end %>
     </div>
+    <div class="star_btn" id="star_btn_id" data-visibility-target="button" style="display: flex; align-items: center; justify-content: center">
+
+      <%= form_tag(set_rate_one_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+        <% if cocktail.rating < 1 %>
+          <a style="display: inline-block"><%= image_submit_tag('star_empty.svg', alt: "Review 1/5", height: 24, width: 24) %></a>
+        <% else %>
+          <a style="display: inline-block"><%= image_submit_tag('star_full.svg', alt: "Review 1/5", height: 24, width: 24) %></a>
+        <% end %>
+      <% end %>
+
+      <%= form_tag(set_rate_two_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+        <% if cocktail.rating < 2 %>
+          <a style="display: inline-block"><%= image_submit_tag('star_empty.svg', alt: "Review 2/5", height: 24, width: 24) %></a>
+        <% else %>
+          <a style="display: inline-block"><%= image_submit_tag('star_full.svg', alt: "Review 2/5", height: 24, width: 24) %></a>
+        <% end %>
+      <% end %>
+
+      <%= form_tag(set_rate_three_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+        <% if cocktail.rating < 3 %>
+          <a style="display: inline-block"><%= image_submit_tag('star_empty.svg', alt: "Review 3/5", height: 24, width: 24) %></a>
+        <% else %>
+          <a style="display: inline-block"><%= image_submit_tag('star_full.svg', alt: "Review 3/5", height: 24, width: 24) %></a>
+        <% end %>
+      <% end %>
+
+      <%= form_tag(set_rate_four_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+        <% if cocktail.rating < 4 %>
+          <a style="display: inline-block"><%= image_submit_tag('star_empty.svg', alt: "Review 4/5", height: 24, width: 24) %></a>
+        <% else %>
+          <a style="display: inline-block"><%= image_submit_tag('star_full.svg', alt: "Review 4/5", height: 24, width: 24) %></a>
+        <% end %>
+      <% end %>
+
+      <%= form_tag(set_rate_five_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+        <% if cocktail.rating < 5 %>
+          <a style="display: inline-block"><%= image_submit_tag('star_empty.svg', alt: "Review 5/5", height: 24, width: 24) %></a>
+        <% else %>
+          <a style="display: inline-block"><%= image_submit_tag('star_full.svg', alt: "Review 5/5", height: 24, width: 24) %></a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
   </div>
 <% end %>
