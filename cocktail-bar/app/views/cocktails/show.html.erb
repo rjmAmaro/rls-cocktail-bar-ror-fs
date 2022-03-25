@@ -3,10 +3,10 @@
   <%= turbo_stream_from "ingredients" %>
   <%= link_to sanitize("&larr; Go to #{@category.name}"), category_path(@category), class: "btn"%>
   <div class="cocktail_main">
-    <h1><%= @cocktail.name.titleize %></h1>
+    <h1 style="margin-bottom: 40px"><%= @cocktail.name.titleize %></h1>
     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
 
-    
+    <h2 style="margin: 20px 0">Ingredients</h2>
     <div id="ingredients">
       <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name } %>
     </div>

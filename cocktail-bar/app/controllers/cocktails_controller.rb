@@ -99,31 +99,51 @@ class CocktailsController < ApplicationController
   helper_method :check_like
 
   def set_rate_one
-    @cocktail.rating = 1
+    if @cocktail.rating == 1
+      @cocktail.rating = 0
+    else
+      @cocktail.rating = 1
+    end
     @cocktail.save
     render @category.cocktails
   end
 
   def set_rate_two
-    @cocktail.rating = 2
+    if @cocktail.rating == 2
+      @cocktail.rating = 0
+    else
+      @cocktail.rating = 2
+    end
     @cocktail.save
     render @category.cocktails
   end
 
   def set_rate_three
-    @cocktail.rating = 3
+    if @cocktail.rating == 3
+      @cocktail.rating = 0
+    else
+      @cocktail.rating = 3
+    end
     @cocktail.save
     render @category.cocktails
   end
 
   def set_rate_four
-    @cocktail.rating = 4
+    if @cocktail.rating == 4
+      @cocktail.rating = 0
+    else
+      @cocktail.rating = 4
+    end
     @cocktail.save
     render @category.cocktails
   end
 
   def set_rate_five
-    @cocktail.rating = 5
+    if @cocktail.rating == 5
+      @cocktail.rating = 0
+    else
+      @cocktail.rating = 5
+    end
     @cocktail.save
     render @category.cocktails
   end
