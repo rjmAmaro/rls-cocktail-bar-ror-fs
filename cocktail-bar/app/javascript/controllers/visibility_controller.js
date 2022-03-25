@@ -16,10 +16,6 @@ export default class extends Controller {
         });
     }
 
-    changeColorTargets() {
-
-    }
-
     toggleTargets() {
         this.hideableTargets.forEach((el) => {
             el.hidden = !el.hidden

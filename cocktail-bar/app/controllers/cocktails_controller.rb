@@ -1,6 +1,7 @@
 class CocktailsController < ApplicationController
-  before_action :set_category, only: :show
-  before_action :set_cocktail, only: :show
+  before_action :set_category, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
+  before_action :set_cocktail, only: [:show, :set_like, :check_like, :set_like_show, :set_rate]
+  @img_path="heart_empty.svg"
 
   def index
     @cocktails = Cocktail.search_by_name(params[:search_by_name])
@@ -53,6 +54,37 @@ class CocktailsController < ApplicationController
     redirect_to categories_path, notice: 'Cocktail deleted successfully.'
   end
 
+  def set_like
+    if @cocktail.like == 1
+      @cocktail.like = 0
+    else
+      @cocktail.like = 1
+    end
+    @cocktail.save
+    render @category.cocktails
+  end
+
+  def set_like_show
+    if @cocktail.like == 1
+      @cocktail.like = 0
+    else
+      @cocktail.like = 1
+    end
+    @cocktail.save
+    redirect_to categories_path
+  end
+
+  def check_like
+    @cocktail.like
+  end
+
+  helper_method :check_like
+
+
+  def set_rate
+
+  end
+
   private
 
   def cocktail_params
@@ -66,17 +98,4 @@ class CocktailsController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
-
-  def like
-
-  end
-
-  def dislike
-
-  end
-
-  def rate
-
-  end
-
 end
