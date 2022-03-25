@@ -26,14 +26,11 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = @category.cocktails.build(name: params[:name], instructions: params[:instructions],
-                                          picture: params[:picture])
+                                          picture: params[:picture], like: 0, rating: 0)
 
-    if @cocktail.save
-      redirect_to category_cocktail_path(category_id: @category.id, id: @cocktail.id),
-                  notice: 'Cocktail added successfully.'
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @cocktail.save
+    redirect_to category_cocktail_path(category_id: @category.id, id: @cocktail.id), notice: 'Cocktail added successfully.'
+
   end
 
   def edit; end
@@ -62,6 +59,7 @@ class CocktailsController < ApplicationController
     new_ingredient = Ingredient.find(params[:ingredient])
     if @cocktail.ingredients.any? { |ingredient| ingredient == new_ingredient }
       redirect_to :back, notice: 'Ingredient already present in this cocktail.'
+
     else
       @cocktail.ingredients << new_ingredient
       @cocktail.save
@@ -100,6 +98,9 @@ class CocktailsController < ApplicationController
   private
 
   def create_category
+    unless params[:picture].include?('https://')
+      redirect_to :back, notice: "Picture urls must start with 'https://'"
+    end
     if params[:new_category]
       if Category.all.any? { |category| category.name == params[:category_name] }
         redirect_to :back, notice: 'There already exists a category with that name.'

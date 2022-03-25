@@ -5,9 +5,9 @@
     <div class="_cocktail_header">
       <div>
       <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
-        <div class="heart_btn" id="heart_btn_id" data-visibility-target="button">
+        <div class="heart_btn" id="heart_btn_id">
           <%= form_tag(set_like_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
-            <%= if cocktail.like == 0 then
+            <%= if cocktail.like == 0
                   image_submit_tag('heart_empty.svg', alt: "Like", height: 24, width: 24)
                 else
                   image_submit_tag('heart_full.svg', alt: "Like", height: 24, width: 24)

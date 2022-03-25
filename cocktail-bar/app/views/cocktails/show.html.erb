@@ -3,20 +3,8 @@
   <%= link_to sanitize("&larr; Go to #{@category.name}"), category_path(@category), class: "btn"%>
   <div class="cocktail_main">
     <h1><%= @cocktail.name.titleize %></h1>
-    <div class="heart_btn" id="heart_btn_id" data-visibility-target="button">
-      <%= form_tag(set_like_show_path(id: @cocktail, category_id: @cocktail.category_id), method: :put) do %>
-        <%= if @cocktail.like == 0 then image_submit_tag('heart_empty.svg', alt: "Like", height: 24, width: 24) else image_submit_tag('heart_full.svg', alt: "Like", height: 24, width: 24) end%>
-      <% end %>
-    </div>
     <%= image_tag(@cocktail.picture, alt: @cocktail.name, height: 300, width: 300) %>
-<<<<<<< HEAD
-    <div id="ingredients">
-      <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name } %>
-    </div>
-    <br>
-    <%= link_to 'Add ingredient', category_cocktail_add_ingredient_form_path(category_id: @category, cocktail_id: @cocktail), class: 'submit_cocktail btn', data: { turbo_frame: 'ingredient_form' } %>
-    <%= turbo_frame_tag 'ingredient_form' %>
-=======
+
     <h3>Rating</h3>
     <div class="star_btn" id="star_btn_id" data-visibility-target="button" >
       <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 1/5", height: 24, width: 24) %></a>
@@ -26,8 +14,13 @@
       <a style="display: inline-block"><%= image_tag('star_empty.svg', alt: "Review 5/5", height: 24, width: 24) %></a>
       <%#= link_to image_tag("star_empty.svg") %>
     </div>
-    <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name } %>
->>>>>>> main
+    <div id="ingredients">
+      <%= render @cocktail.ingredients.sort { |a, b| a.name <=> b.name } %>
+    </div>
+    <br>
+    <%= link_to 'Add ingredient', category_cocktail_add_ingredient_form_path(category_id: @category, cocktail_id: @cocktail), class: 'submit_cocktail btn', data: { turbo_frame: 'ingredient_form' } %>
+    <%= turbo_frame_tag 'ingredient_form' %>
+
     <h3>Instructions</h3>
     <%= @cocktail.instructions %>
   </div>
