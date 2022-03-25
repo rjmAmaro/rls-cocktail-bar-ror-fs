@@ -25,9 +25,7 @@ parsed_categories.each do |category|
     parsed_drink_info = JSON.parse(drink_info.body)['drinks'][0]
 
     cocktail = Cocktail.create(name: parsed_drink_info['strDrink'], picture: parsed_drink_info['strDrinkThumb'],
-                               instructions: parsed_drink_info['strInstructions'], category: new_category)
-
-    # puts parsed_drink_info['strDrink']
+                               instructions: parsed_drink_info['strInstructions'], category: new_category, like: 0, rating: 0)
 
     i = 1
     loop do
@@ -64,22 +62,7 @@ parsed_categories.each do |category|
       end
 
       cocktail.ingredients.push ingredient
-
-      # puts ingredient.name
-
       i += 1
     end
   end
 end
-
-# Get ingredients from CocktailDB API
-
-# ingredients = RestClient.get 'www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-# parsed_ingredients = JSON.parse(ingredients.body)['drinks']
-#
-# parsed_ingredients.each do |ingredient|
-#
-#   #puts ingredient['strIngredient1'].gsub(' ', '_').downcase
-#
-#   if ingredient['strIngredient1'] == "J\u00E4germeister"
-#     ing = RestClient.get("www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=278")

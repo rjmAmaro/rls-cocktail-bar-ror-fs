@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 class CocktailsController < ApplicationController
-  before_action :set_category, only: %i[show destroy]
-  before_action :set_cocktail, only: %i[show destroy]
+  before_action :set_category, only: %i[show destroy set_like set_rate set_like_show]
+  before_action :set_cocktail, only: %i[show destroy set_like set_rate set_like_show]
   before_action :create_category, only: [:create]
 
   def search
@@ -70,6 +68,34 @@ class CocktailsController < ApplicationController
       redirect_to :back, notice: 'Ingredient added to cocktail successfully.'
     end
   end
+
+  def set_like
+    @cocktail.like = if @cocktail.like == 1
+                       0
+                     else
+                       1
+                     end
+    @cocktail.save
+    render @category.cocktails
+  end
+
+  def set_like_show
+    @cocktail.like = if @cocktail.like == 1
+                       0
+                     else
+                       1
+                     end
+    @cocktail.save
+    redirect_to categories_path
+  end
+
+  def check_like
+    @cocktail.like
+  end
+
+  helper_method :check_like
+
+  def set_rate; end
 
   private
 

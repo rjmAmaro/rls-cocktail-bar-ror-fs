@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: %i[show destroy]
 
   def index
     @hide = true

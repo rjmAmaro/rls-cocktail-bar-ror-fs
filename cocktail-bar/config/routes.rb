@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   get 'search', to: 'cocktails#search'
   post 'create', to: 'cocktails#create'
-  post 'set_like', to: 'cocktails#set_like'
   get 'cocktail_form', to: 'cocktails#cocktail_form'
+  put 'set_like', to: 'cocktails#set_like'
+  put 'set_like_show', to: 'cocktails#set_like_show'
+  put 'set_rate', to: 'cocktails#set_rate'
 
   resources :categories do
     resources :cocktails do

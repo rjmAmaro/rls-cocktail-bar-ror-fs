@@ -1,8 +1,26 @@
 <%= turbo_frame_tag cocktail do %>
   <div class="cocktail">
-    <%= link_to cocktail.name.titleize, category_cocktail_path(id: cocktail, category_id: cocktail.category_id), data: { turbo_frame: "cocktails"} %>
-    <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
-    <%= button_to image_tag('delete.png', width: 30, height: 30), category_cocktail_path(id: cocktail, category_id: cocktail.category_id), method: :delete, class: 'delete_btn' %>
+
+    <%= link_to cocktail.name.titleize, category_cocktail_path(id: cocktail, category_id: cocktail.category_id), data: { turbo_frame: "cocktails" } %>
+    <div class="_cocktail_header">
+      <div>
+      <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
+        <div class="heart_btn" id="heart_btn_id" data-visibility-target="button">
+          <%= form_tag(set_like_path(id: cocktail, category_id: cocktail.category_id), method: :put) do %>
+            <%= if cocktail.like == 0 then
+                  image_submit_tag('heart_empty.svg', alt: "Like", height: 24, width: 24)
+                else
+                  image_submit_tag('heart_full.svg', alt: "Like", height: 24, width: 24)
+                end %>
+          <% end %>
+        </div>
+      </div>
+      <%= button_to image_tag('delete.png', width: 30, height: 30), category_cocktail_path(id: cocktail, category_id: cocktail.category_id), method: :delete, class: 'delete_btn' %>
+
+
+    </div>
+
+
 
   </div>
 <% end %>
