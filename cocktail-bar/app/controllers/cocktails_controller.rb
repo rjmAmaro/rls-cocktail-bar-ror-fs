@@ -1,7 +1,7 @@
 class CocktailsController < ApplicationController
 
-  before_action :set_category, only: %i[show destroy set_like set_rate set_like_show, :set_rate_one, :set_rate_two, :set_rate_three, :set_rate_four, :set_rate_five]
-  before_action :set_cocktail, only: %i[show destroy set_like set_rate set_like_show, :set_rate_one, :set_rate_two, :set_rate_three, :set_rate_four, :set_rate_five]
+  before_action :set_category, only: %i[show destroy set_like set_rate set_like_show set_rate_one set_rate_two set_rate_three set_rate_four set_rate_five]
+  before_action :set_cocktail, only: %i[show destroy set_like set_rate set_like_show set_rate_one set_rate_two set_rate_three set_rate_four set_rate_five]
   before_action :create_category, only: [:create]
 
   def search
@@ -148,7 +148,7 @@ class CocktailsController < ApplicationController
     else
       @category = Category.find(params[:new_cocktail_category])
     end
-
+  end
 
   def cocktail_params
     params.require(:cocktail).permit(:name, :picture, :instructions, :search_by_name)
