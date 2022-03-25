@@ -3,6 +3,7 @@
     <h1>Categories</h1>
 
     <%= link_to "Add cocktail", cocktail_form_path, class: "add_cocktail_btn", data: { turbo_frame: 'cocktails' } %>
+    <%= link_to "Show favorites", cocktail_favorites_path, class: "add_cocktail_btn", data: { turbo_frame: 'cocktails' } %>
     <!--    <a data-action="visibility#toggleForm" class="add_cocktail_btn">Add cocktail</a>-->
     <div>
       <%= render @categories %>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   put 'set_rate_three', to: 'cocktails#set_rate_three'
   put 'set_rate_four', to: 'cocktails#set_rate_four'
   put 'set_rate_five', to: 'cocktails#set_rate_five'
+  get 'cocktail_favorites', to: 'cocktails#favorites'
+
   resources :categories do
     resources :cocktails do
       get 'add_ingredient_form', to: 'cocktails#add_ingredient_form'
