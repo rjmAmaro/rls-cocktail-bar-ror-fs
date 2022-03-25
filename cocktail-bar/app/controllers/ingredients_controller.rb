@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 class IngredientsController < ApplicationController
-  before_action :set_ingredient
-  before_action :set_cocktail
+  before_action :set_ingredient, only: :show
+  before_action :set_cocktail, only: :show
 
-  def show
-
-  end
+  def show; end
 
   private
 

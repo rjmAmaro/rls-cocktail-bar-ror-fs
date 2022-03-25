@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :set_category, only: :show
+  before_action :set_category, only: [:show, :destroy]
 
   def index
     @hide = true
@@ -11,7 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    # @category = Category.new
   end
 
   def create
@@ -37,7 +39,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
 
-    redirect_to categories_path, notice: 'Category deleted successfully.'
+    render categories_path, notice: 'Category deleted successfully.'
   end
 
   private

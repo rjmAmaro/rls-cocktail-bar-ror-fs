@@ -1,4 +1,6 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class CocktailsTest < ApplicationSystemTestCase
   setup do
@@ -7,14 +9,14 @@ class CocktailsTest < ApplicationSystemTestCase
     @ingredient = ingredients(:first)
   end
 
-  test "List categories" do
+  test 'List categories' do
     visit categories_path
-    assert_selector "h1", text: "Categories"
+    assert_selector 'h1', text: 'Categories'
   end
 
-  test "List all cocktails from a category" do
+  test 'List all cocktails from a category' do
     visit categories_path
-    assert_selector "h1", text: "Categories"
+    assert_selector 'h1', text: 'Categories'
 
     click_on @category.name
     assert_text @cocktail.name.titleize
@@ -24,10 +26,9 @@ class CocktailsTest < ApplicationSystemTestCase
 
   # test "Create a new cocktail" do  end
 
-  test "List cocktail page" do
-
+  test 'List cocktail page' do
     visit categories_path
-    assert_selector "h1", text: "Categories"
+    assert_selector 'h1', text: 'Categories'
 
     click_on @category.name
     assert_text @cocktail.name.titleize
@@ -51,9 +52,9 @@ class CocktailsTest < ApplicationSystemTestCase
 
   # test "List all ingredients from a cocktail" do  end
 
-  test "List ingredient page" do
+  test 'List ingredient page' do
     visit categories_path
-    assert_selector "h1", text: "Categories"
+    assert_selector 'h1', text: 'Categories'
 
     click_on @category.name
     assert_text @cocktail.name.titleize

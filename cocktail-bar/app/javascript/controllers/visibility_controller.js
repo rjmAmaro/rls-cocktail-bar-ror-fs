@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ "hideable", "button" ]
+    static targets = [ "hideable", "button", "form" ]
     hide = true;
 
     showTargets() {
@@ -18,6 +18,12 @@ export default class extends Controller {
 
     changeColorTargets() {
 
+    }
+
+    toggleForm() {
+        this.formTargets.forEach((el) => {
+            el.hidden = !el.hidden
+        })
     }
 
     toggleTargets() {

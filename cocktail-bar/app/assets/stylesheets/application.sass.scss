@@ -12,10 +12,13 @@
 @import "components/flash";
 @import "components/search_btn";
 @import "components/search_bar";
+@import "components/form";
+@import "components/delete";
 
 //Config
 @import "config/reset";
 @import "config/variables";
+@import "config/animations";
 
 //Layouts
 @import "layouts/header";

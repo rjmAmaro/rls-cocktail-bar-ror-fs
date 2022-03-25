@@ -15,7 +15,7 @@
 
   &__message {
     font-size: var(--font-size-s);
-    color: var(--color-white);
+    color: white;
     padding: var(--space-xs) var(--space-m);
     background-color: var(--color-dark);
     animation: appear-then-fade 4s both;

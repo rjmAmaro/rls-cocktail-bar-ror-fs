@@ -2,5 +2,7 @@
   <div class="cocktail">
     <%= link_to cocktail.name.titleize, category_cocktail_path(id: cocktail, category_id: cocktail.category_id), data: { turbo_frame: "cocktails"} %>
     <%= image_tag(cocktail.picture, alt: cocktail.name, height: 150, width: 150) %>
+    <%= button_to image_tag('delete.png', width: 30, height: 30), category_cocktail_path(id: cocktail, category_id: cocktail.category_id), method: :delete, class: 'delete_btn' %>
+
   </div>
 <% end %>

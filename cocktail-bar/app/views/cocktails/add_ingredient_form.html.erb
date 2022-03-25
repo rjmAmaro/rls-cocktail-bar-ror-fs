@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'ingredient_form' do %>
+  <%= form_tag(category_cocktail_add_ingredient_path(id: @cocktail.id), method: :post, class: 'form') do %>
+    Ingredient: <%= select_tag "ingredient", options_from_collection_for_select(Ingredient.all.sort { |a,b| a.name <=> b.name }, "id", "name"), class: 'category_select' %><br>
+    <%= submit_tag 'Submit', class: 'btn submit_cocktail' %>
+  <% end %>
+<% end %>

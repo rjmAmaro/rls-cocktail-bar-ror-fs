@@ -2,6 +2,7 @@
 
 <%= turbo_frame_tag "cocktails" do %>
   <%#= render "cocktails/empty_state" %>
-  <h1><%= @category.name %></h1><br>
+  <h1><%= @category.name %></h1>    <%= button_to image_tag('delete.png', width: 30, height: 30), category_path(id: @category), method: :delete, class: 'delete_btn' %>
+  <br>
   <%= render @cocktails %>
 <% end %>

@@ -1,0 +1,54 @@
+
+.cocktail_form_txt {
+  background-color: var(--color-btn);
+  //height: 50px;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 4% 0;
+  transition: ease-in-out 0.2s;
+}
+
+.submit_cocktail {
+  border: none;
+  padding: 15px;
+  margin: 30px 0;
+  background-color: #e763ae;
+  border-radius: 10px;
+  transition: ease-in-out 0.2s;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  &:hover {
+    background-color: #a13974;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    color: white;
+  }
+}
+
+.category_select {
+  border-radius: 20px;
+  height: 30px;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.checkbox_label {
+  font-size: 20px;
+}
+
+.checkbox {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  background:white;
+  border-radius:5px;
+  border:2px solid #555;
+}
+
+.checkbox:checked {
+  background: #475167;
+}
