@@ -67,6 +67,10 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def favorites
+    @favorites = Cocktail.all.find_all { |cocktail| cocktail.like == 1 }
+  end
+
   def set_like
     @cocktail.like = if @cocktail.like == 1
                        0

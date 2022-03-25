@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   put 'set_like', to: 'cocktails#set_like'
   put 'set_like_show', to: 'cocktails#set_like_show'
   put 'set_rate', to: 'cocktails#set_rate'
+  get 'cocktail_favorites', to: 'cocktails#favorites'
 
   resources :categories do
     resources :cocktails do
